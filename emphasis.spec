@@ -19,7 +19,7 @@ BuildRequires:	evas-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
 BuildRequires:	ecore-devel >= 0.9.9.038, edje-devel >= 0.5.0.038, edje >= 0.5.0.038
 Buildrequires:  %{mklibname mpd}-devel
 Buildrequires:  ecore, %{mklibname xml2}-devel
-Buildrequires:  enhance-devel >= 0.0.1 
+Buildrequires:  %{mklibname enhance}-devel >= 0.0.1 
 BuildRequires:  ImageMagick
 BuildRequires:  desktop-file-utils
 
