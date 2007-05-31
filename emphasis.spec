@@ -61,8 +61,8 @@ cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
         xdg="true"
 EOF
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
-cp -vf $RPM_BUILD_ROOT/data/%name.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/applications/
+cp -vf data/%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
 
 desktop-file-install --vendor="" \
   --remove-category="Application" \
@@ -97,5 +97,6 @@ rm -rf $RPM_BUILD_ROOT
 %_iconsdir/*.png
 %_miconsdir/*.png
 %_datadir/pixmaps/*.png
+%_datadir/pixmaps/%name.svg
 %{_datadir}/applications/*
 
