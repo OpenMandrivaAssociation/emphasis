@@ -6,7 +6,7 @@
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} %major -d
 
-Summary: 	Emphasis is a simple MPD (Music Player Daemon) client writen in C/Etk.
+Summary: 	Emphasis is a simple MPD (Music Player Daemon) client writen in C/Etk
 Name: 		%{name}
 Version: 	%{version}
 Release: 	%{release}
