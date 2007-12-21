@@ -14,6 +14,7 @@ License: 	BSD
 Group: 		Graphical desktop/Enlightenment
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
+BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildRequires:	evas-devel >= 0.9.9.038, etk-devel >= 0.1.0.003
 BuildRequires:	ecore-devel >= 0.9.9.038, edje-devel >= 0.5.0.038, edje >= 0.5.0.038
 Buildrequires:  libmpd-devel
