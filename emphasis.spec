@@ -47,19 +47,7 @@ do Y=`echo -n $mo | sed -e "s|/||"`;
 echo "%lang($Y) $(echo %_datadir/locale/${mo}/LC_MESSAGES/%{name}.mo)" >> $RPM_BUILD_DIR/%{name}-%{version}/%{name}.lang
 done
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
 
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}):\
-        needs="X11" \
-        section="Multimedia/Audio" \
-        title="Emphasis" \
-        longtitle="Emphasis MPD audio player" \
-        command="%{_bindir}/emphasis" \
-        icon="%name.png" \
-        startup_notify="true" \
-        xdg="true"
-EOF
 
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/applications/
 cp -vf data/%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
@@ -92,7 +80,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%name
-%{_menudir}/*
 %_liconsdir/*.png
 %_iconsdir/*.png
 %_miconsdir/*.png
