@@ -65,11 +65,15 @@ convert -resize 16x16 data/images/haricot_musique.png %buildroot%_miconsdir/%nam
 mkdir -p %buildroot%{_datadir}/pixmaps
 cp data/images/haricot_musique.png %buildroot%{_datadir}/pixmaps/%name.png
 
+%if %mdkversion < 200900
 %post 
 %{update_menus} 
+%endif
 
+%if %mdkversion < 200900
 %postun 
 %{clean_menus} 
+%endif
 
 
 %clean
