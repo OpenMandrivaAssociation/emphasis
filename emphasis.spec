@@ -1,6 +1,6 @@
 %define	name emphasis
 %define	version 0.0.1
-%define release %mkrel 3
+%define release %mkrel 5
 
 %define major 0
 %define libname %mklibname %{name} %major
