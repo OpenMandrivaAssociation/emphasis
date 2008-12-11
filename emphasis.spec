@@ -20,7 +20,7 @@ BuildRequires:	ecore-devel >= 0.9.9.042, edje-devel >= 0.5.0.042, edje >= 0.5.0.
 Buildrequires:  libmpd-devel
 Buildrequires:  ecore >= 0.9.9.042, %{mklibname xml2}-devel
 Buildrequires:  enhance-devel >= 0.0.1 
-BuildRequires:  ImageMagick
+BuildRequires:  imagemagick
 BuildRequires:  desktop-file-utils
 
 
