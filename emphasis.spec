@@ -52,18 +52,17 @@ done
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/applications/
 cp -vf data/%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
 
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Multimedia-Audio" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/%name.desktop
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+[Desktop Entry]
+Name=Emphasis
+Comment=Emphasis
+Exec=%{_gamesbindir}/emphasis
+Icon=%{_gamesdatadir}/%{oname}/%{oname}-icon-48x48.png
+Terminal=false
+Type=Application
+EOF
 
-mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
-install -m 644 data/images/haricot_musique.png %buildroot%_liconsdir/%name.png
-convert -resize 32x32 data/images/haricot_musique.png %buildroot%_iconsdir/%name.png
-convert -resize 16x16 data/images/haricot_musique.png %buildroot%_miconsdir/%name.png
-
-mkdir -p %buildroot%{_datadir}/pixmaps
-cp data/images/haricot_musique.png %buildroot%{_datadir}/pixmaps/%name.png
 
 %if %mdkversion < 200900
 %post 
