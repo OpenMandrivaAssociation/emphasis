@@ -93,6 +93,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%name
 %_liconsdir/*.png
 %_iconsdir/*.png
+%_iconsdir/hicolor/48x48/apps/*.png
+%_iconsdir/hicolor/scalable/apps/*.svg
 %_miconsdir/*.png
 %_datadir/pixmaps/*.png
 %_datadir/pixmaps/%name.svg
