@@ -83,9 +83,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%name
-%_liconsdir/*.png
-%_iconsdir/*.png
-%_miconsdir/*.png
+#%_liconsdir/*.png
+#%_iconsdir/*.png
+#%_miconsdir/*.png
 %_datadir/pixmaps/*.png
 %_datadir/pixmaps/%name.svg
 %{_datadir}/applications/*
