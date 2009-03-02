@@ -15,10 +15,10 @@ Group: 		Graphical desktop/Enlightenment
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	evas-devel >= 0.9.9.042, etk-devel >= 0.1.0.042
-BuildRequires:	ecore-devel >= 0.9.9.042, edje-devel >= 0.5.0.042, edje >= 0.5.0.042
+BuildRequires:	evas-devel >= 0.9.9.050, etk-devel >= 0.1.0.042
+BuildRequires:	ecore-devel >= 0.9.9.050, edje-devel >= 0.9.9.050, edje >= 0.9.9.050
 Buildrequires:  libmpd-devel
-Buildrequires:  ecore >= 0.9.9.042, %{mklibname xml2}-devel
+Buildrequires:  ecore >= 0.9.9.050, %{mklibname xml2}-devel
 Buildrequires:  enhance-devel >= 0.0.1 
 BuildRequires:  imagemagick
 BuildRequires:  desktop-file-utils
