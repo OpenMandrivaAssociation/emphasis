@@ -48,9 +48,17 @@ echo "%lang($Y) $(echo %_datadir/locale/${mo}/LC_MESSAGES/%{name}.mo)" >> $RPM_B
 done
 
 
-
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/applications/
+mkdir -p $RPM_BUILD_ROOT/%{_datadir}/pixmaps
 cp -vf data/%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
+cp -vf data/%{name}.png $RPM_BUILD_ROOT%{_datadir}/pixmaps/
+cp -vf data/%{name}.svg $RPM_BUILD_ROOT%{_datadir}/pixmaps/
+
+mkdir -p %buildroot{%_liconsdir,%_iconsdir,%_miconsdir}
+install -m 644 data/%name.png %buildroot%_liconsdir/%name.png
+convert -resize 32x32 data/%name.png %buildroot%_iconsdir/%name.png
+convert -resize 16x16 data/%name.png %buildroot%_miconsdir/%name.png
+
 
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -58,7 +66,7 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 Name=Emphasis
 Comment=Emphasis
 Exec=%{_gamesbindir}/emphasis
-Icon=%{_gamesdatadir}/%{oname}/%{oname}-icon-48x48.png
+Icon=%{_datadir}/pixmaps/%{name}.png
 Terminal=false
 Type=Application
 EOF
@@ -83,9 +91,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%name
-#%_liconsdir/*.png
-#%_iconsdir/*.png
-#%_miconsdir/*.png
+%_liconsdir/*.png
+%_iconsdir/*.png
+%_miconsdir/*.png
 %_datadir/pixmaps/*.png
 %_datadir/pixmaps/%name.svg
 %{_datadir}/applications/*
