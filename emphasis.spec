@@ -1,6 +1,6 @@
 %define	name emphasis
 %define	version 0.0.1
-%define release %mkrel 5
+%define release %mkrel 6
 
 %define major 0
 %define libname %mklibname %{name} %major
@@ -28,7 +28,6 @@ BuildRequires:  desktop-file-utils
 Emphasis is a simple MPD (Music Player Daemon) client writen in C/Etk.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
 %setup -q
 
 %build
