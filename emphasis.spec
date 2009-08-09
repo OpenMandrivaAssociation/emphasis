@@ -1,10 +1,6 @@
 %define	name emphasis
 %define	version 0.0.1
-%define release %mkrel 7
-
-%define major 0
-%define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
+%define release %mkrel 8
 
 Summary: 	Simple MPD (Music Player Daemon) client writen in C/Etk
 Name: 		%{name}
@@ -15,14 +11,11 @@ Group: 		Graphical desktop/Enlightenment
 URL: 		http://get-e.org/
 Source: 	%{name}-%{version}.tar.bz2
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildRequires:	evas-devel >= 0.9.9.050, etk-devel >= 0.1.0.042
-BuildRequires:	ecore-devel >= 0.9.9.050, edje-devel >= 0.9.9.050, edje >= 0.9.9.050
-Buildrequires:  libmpd-devel
-Buildrequires:  ecore >= 0.9.9.050, %{mklibname xml2}-devel
+BuildRequires:	etk-devel >= 0.1.0.002
+BuildRequires:	ecore-devel >= 0.9.9.022
+Buildrequires:  libmpd-devel >= 0.12.0
+Buildrequires:  libxml2-devel >= 2.6.0
 Buildrequires:  enhance-devel >= 0.0.1 
-BuildRequires:  imagemagick
-BuildRequires:  desktop-file-utils
-
 
 %description
 Emphasis is a simple MPD (Music Player Daemon) client writen in C/Etk.
@@ -31,22 +24,17 @@ Emphasis is a simple MPD (Music Player Daemon) client writen in C/Etk.
 %setup -q
 
 %build
-./autogen.sh
+NOCONFIGURE=yes ./autogen.sh
 %configure2_5x
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
 
-# %lang(fr) /usr/share/locale/fr/LC_MESSAGES/ephoto.mo
-%find_lang %{name}
-for mo in `ls %buildroot%_datadir/locale/` ;
-do Y=`echo -n $mo | sed -e "s|/||"`;
-echo "%lang($Y) $(echo %_datadir/locale/${mo}/LC_MESSAGES/%{name}.mo)" >> $RPM_BUILD_DIR/%{name}-%{version}/%{name}.lang
-done
+%find_lang %name
 
-
+%if 0
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/applications/
 mkdir -p $RPM_BUILD_ROOT/%{_datadir}/pixmaps
 cp -vf data/%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/
@@ -70,7 +58,7 @@ Terminal=false
 Type=Application
 EOF
 
-
+%endif
 %if %mdkversion < 200900
 %post 
 %{update_menus} 
@@ -90,12 +78,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING NEWS README TODO
 %{_bindir}/*
 %{_datadir}/%name
-%_liconsdir/*.png
-%_iconsdir/*.png
-%_iconsdir/hicolor/48x48/apps/*.png
-%_iconsdir/hicolor/scalable/apps/*.svg
-%_miconsdir/*.png
-%_datadir/pixmaps/*.png
-%_datadir/pixmaps/%name.svg
+%{_iconsdir}/hicolor/*/*/*
 %{_datadir}/applications/*
-
