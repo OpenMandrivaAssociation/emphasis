@@ -1,6 +1,6 @@
 %define	name emphasis
 %define	version 0.0.1
-%define release %mkrel 8
+%define release %mkrel 9
 
 Summary: 	Simple MPD (Music Player Daemon) client writen in C/Etk
 Name: 		%{name}
